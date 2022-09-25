@@ -22,7 +22,7 @@ html, body {
     padding: 0;
     box-sizing: border-box;
     /*uncomment for debugging*/
-    background-color: #171717;
+    /*background-color: #171717;*/
 }
 
 #main {
