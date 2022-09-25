@@ -38,7 +38,7 @@ let tempMapper = "";
 socket.onmessage = (e) => {
     const json = JSON.parse(e.data);
 
-    if (json.menu.bm.metadata.title !== tempName || json.menu.bm.metadata.difficulty || tempDiff && json.menu.bm.metadata.mapper || tempMapper) {
+    if (json.menu.bm.metadata.title !== tempName || json.menu.bm.metadata.difficulty !== tempDiff || json.menu.bm.metadata.mapper !== tempMapper) {
         tempName = json.menu.bm.metadata.title;
         tempDiff = json.menu.bm.metadata.difficulty;
         tempMapper = json.menu.bm.metadata.mapper;
