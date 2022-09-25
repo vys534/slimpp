@@ -1,0 +1,193 @@
+:root {
+    --primary: #ff125a;
+    --primary-dark: #31001a;
+    --white: #ffffff;
+    --secondary: #806b6f;
+    --counter-height: 90px;
+    --counter-width: 1150px;
+}
+
+@font-face {
+    font-family: Lexend Deca;
+    src: url(../fonts/LexendDeca-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Lexend Deca Bold";
+    src: url(../fonts/LexendDeca-ExtraBold.ttf);
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*uncomment for debugging*/
+    background-color: #171717;
+}
+
+#main {
+    display: grid;
+    grid-template-columns: 90px auto auto;
+    width: var(--counter-width);
+    height: var(--counter-height);
+
+}
+
+.main-section {
+    width: 100%;
+}
+
+body {
+    font-family: "Lexend Deca", sans-serif;
+    color: var(--white);
+    font-size: 1.4em;
+}
+
+.stats-container {
+    width: 100%;
+}
+
+.stats-top span {
+    color: var(--primary);
+    font-family: "Lexend Deca Bold", sans-serif;
+    font-size: 1.7em;
+
+}
+
+.stats-top {
+    background: var(--primary-dark);
+    border-radius: 5px;
+    padding: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.stats-bottom {
+    color: var(--secondary);
+}
+
+.hits {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 10px;
+    width: 100%;
+    flex-grow: 1;
+    font-family: "Lexend Deca Bold", sans-serif;
+}
+
+#hits-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.hits-container {
+    font-size: 1.15em;
+}
+
+#hit100 {
+    color: #2ff82f;
+    text-align: left;
+}
+
+#hit50 {
+    text-align: center;
+    color: yellow;
+}
+
+#hit0 {
+    color: red;
+    text-align: right;
+}
+
+#disabled {
+    text-align: center;
+    font-size: 1.2em;
+}
+
+#disabled p {
+    opacity: 0.5;
+}
+
+img {
+    max-width: 100%;
+}
+
+#map-progress {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: radial-gradient(closest-side, transparent 0, transparent 100%),
+    conic-gradient(var(--primary) calc(var(--value) * 1%), var(--primary-dark) 0);
+}
+
+#map-information {
+    display: flex;
+    justify-content: flex-start;
+}
+
+#map-title {
+    margin-bottom: 10px;
+    width: 100%;
+    font-family: "Lexend Deca Bold", sans-serif;
+}
+
+#map-sr-mods {
+    width: 200px;
+    border-radius: 5px;
+    background-color: var(--primary);
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+#map-sr {
+    font-family: "Lexend Deca Bold", sans-serif;
+}
+
+#map-bpm-container {
+    padding: 5px;
+    font-size: 0.9em;
+}
+
+#map-sr::after {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background: url(../img/star.png);
+    background-size: contain;
+}
+
+#main {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+}
+
+#progress {
+    flex-shrink: 3;
+}
+
+#stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    position: relative;
+}
+
+#stats-combo, #stats-pp {
+    text-align: center;
+}
+
+.subtitle {
+    vertical-align: middle;
+    font-size: 0.7em;
+}
+
+#ur-container {
+    font-size: 0.9em;
+}

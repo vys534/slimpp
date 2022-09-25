@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>SlimPP</title>
+</head>
+<body>
+<div id="main-wrapper">
+    <div id="main">
+        <div class="main-section" id="progress">
+            <div role="progressbar" style="--value:0" id="map-progress"></div>
+        </div>
+        <div class="main-section">
+            <div id="map-title">Artist - Title [Difficulty]</div>
+            <div id="map-information">
+                <div id="map-sr-mods">
+                    <span id="map-sr">0</span>
+                    <span id="map-mods">+?</span>
+                </div>
+                <div id="map-bpm-container"><span id="map-bpm">0</span> BPM</div>
+            </div>
+        </div>
+        <div class="main-section" id="stats">
+            <div class="stats-container" id="stats-pp">
+                <p class="stats-top"><span id="pp">0</span> PP</p>
+                <p class="stats-bottom"><span id="pp-maximum-this-play">0</span> <span class="subtitle">MAX</span></p>
+            </div>
+            <div class="stats-container" id="hits-container">
+                <div class="hits">
+                    <div class="hits-container" id="hit100">0</div>
+                    <div class="hits-container" id="hit50">0</div>
+                    <div class="hits-container" id="hit0">0</div>
+                </div>
+                <p id="ur-container"><span id="ur">0</span> UR</p>
+            </div>
+            <div class="stats-container" id="stats-combo">
+                <p class="stats-top">X <span id="combo">0</span></p>
+                <p class="stats-bottom"><span class="subtitle">MAX</span> <span id="max-combo">0</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="deps/reconnecting-websocket.min.js"></script>
+<script src="index.js"></script>
+</body>
+</html>
