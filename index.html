@@ -8,24 +8,30 @@
 </head>
 <body>
 <div id="main-wrapper">
+    <div id="bg-wrapper">
+        <div id="bg-mask"></div>
+        <img id="bg">
+    </div>
     <div id="main">
         <div class="main-section" id="progress">
             <div role="progressbar" style="--value:0" id="map-progress"></div>
         </div>
-        <div class="main-section">
-            <div id="map-title">Artist - Title [Difficulty]</div>
+        <div class="main-section" id="map-information-wrapper">
+            <div id="map-title-wrapper">
+                <div id="map-title">SlimPP</div>
+            </div>
             <div id="map-information">
                 <div id="map-sr-mods">
-                    <span id="map-sr">0</span>
-                    <span id="map-mods">+?</span>
+                    <span id="map-sr">-</span>
+                    <span id="map-mods">+-</span>
                 </div>
-                <div id="map-bpm-container"><span id="map-bpm">0</span> BPM</div>
+                <div id="map-bpm-container"><span id="map-bpm">-</span> BPM</div>
             </div>
         </div>
         <div class="main-section" id="stats">
             <div class="stats-container" id="stats-pp">
-                <p class="stats-top"><span id="pp">0</span> PP</p>
-                <p class="stats-bottom"><span id="pp-maximum-this-play">0</span> <span class="subtitle">MAX</span></p>
+                <p class="stats-top"><span id="pp" >0</span> PP</p>
+                <p class="stats-bottom"><span id="pp-maximum-this-play" class="max">0</span> <span class="subtitle">MAX</span></p>
             </div>
             <div class="stats-container" id="hits-container">
                 <div class="hits">
@@ -33,11 +39,7 @@
                     <div class="hits-container" id="hit50">0</div>
                     <div class="hits-container" id="hit0">0</div>
                 </div>
-                <p id="ur-container"><span id="ur">0</span> UR</p>
-            </div>
-            <div class="stats-container" id="stats-combo">
-                <p class="stats-top">X <span id="combo">0</span></p>
-                <p class="stats-bottom"><span class="subtitle">MAX</span> <span id="max-combo">0</span></p>
+                <p id="ur-container"><span id="ur">-</span> UR</p>
             </div>
         </div>
     </div>

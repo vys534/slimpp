@@ -1,14 +1,19 @@
 :root {
-    --primary: #ff125a;
-    --primary-dark: #31001a;
-    --white: #ffffff;
-    --secondary: #806b6f;
+    --primary: #ff125a;       /* Primary color used for progress, star rating/mod section, PP text */
+    --primary-dark: #31001a;  /* used for PP/progress background color */
+    --text-color: #ffffff;    /* Color used by most text */
+    --secondary: #806b6f;     /* Color of text under PP to show max possible current play */
+
+    /* Don't touch the variables below unless you know what you're doing */
+    --animation-time: 9s;
     --counter-height: 90px;
-    --counter-width: 1150px;
+    --map-title-width: 500;
+    --offset: -500px;
+    --bg-offset: 0px;
 }
 
 @font-face {
-    font-family: Lexend Deca;
+    font-family: "Lexend Deca";
     src: url(../fonts/LexendDeca-Regular.ttf);
 }
 
@@ -21,16 +26,50 @@ html, body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /*uncomment for debugging*/
-    /*background-color: #171717;*/
+    width: fit-content;
+}
+
+#main-wrapper {
+    background-size: 65%;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 1fr;
+    height: var(--counter-height);
+    overflow: hidden;
+}
+
+#bg-wrapper {
+    grid-row-start: 1;
+    grid-column-start: 1;
+    height: var(--counter-height);
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+#bg-mask {
+    grid-row-start: 1;
+    grid-column-start: 1;
+    background: -webkit-linear-gradient(left, rgba(0,0,0,0.6) 35%, rgba(0,0,0,1.0) 70%) no-repeat;
+    height: var(--counter-height);
+    width: 100%;
+}
+
+#bg {
+    grid-row-start: 1;
+    grid-column-start: 1;
+    z-index: -99;
+    width: 900px;
+    margin-top: var(--bg-offset);
+    overflow: hidden;
 }
 
 #main {
-    display: grid;
-    grid-template-columns: 90px auto auto;
-    width: var(--counter-width);
+    grid-row-start: 1;
+    grid-column-start: 1;
     height: var(--counter-height);
-
+    padding: 0 15px;
+    border-radius: 5px;
+    z-index:100;
 }
 
 .main-section {
@@ -39,7 +78,7 @@ html, body {
 
 body {
     font-family: "Lexend Deca", sans-serif;
-    color: var(--white);
+    color: var(--text-color);
     font-size: 1.4em;
 }
 
@@ -47,23 +86,32 @@ body {
     width: 100%;
 }
 
+.stats-top span, .max, .hits, #map-sr {
+    font-family: "Lexend Deca Bold", sans-serif;
+}
+
 .stats-top span {
     color: var(--primary);
-    font-family: "Lexend Deca Bold", sans-serif;
     font-size: 1.7em;
 
 }
 
 .stats-top {
     background: var(--primary-dark);
-    border-radius: 5px;
     padding: 2px;
     white-space: nowrap;
     overflow: hidden;
+    border-radius: 5px;
 }
 
 .stats-bottom {
     color: var(--secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.subtitle {
+    padding: 0 5px;
 }
 
 .hits {
@@ -72,33 +120,30 @@ body {
     column-gap: 10px;
     width: 100%;
     flex-grow: 1;
-    font-family: "Lexend Deca Bold", sans-serif;
 }
 
 #hits-container {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
 .hits-container {
-    font-size: 1.15em;
+    font-size: 1.3em;
+    text-align: center;
 }
 
 #hit100 {
     color: #2ff82f;
-    text-align: left;
 }
 
 #hit50 {
-    text-align: center;
     color: yellow;
 }
 
 #hit0 {
     color: red;
-    text-align: right;
 }
 
 #disabled {
@@ -122,35 +167,57 @@ img {
     place-items: center;
     background: radial-gradient(closest-side, transparent 0, transparent 100%),
     conic-gradient(var(--primary) calc(var(--value) * 1%), var(--primary-dark) 0);
+    border: 1px solid var(--primary);
 }
 
 #map-information {
     display: flex;
     justify-content: flex-start;
+    align-items: center;
+}
+
+
+@keyframes marquee {
+    0% {
+        transform: translate(500px, 0);
+    }
+    100% {
+        transform: translate(var(--offset), 0);
+    }
+}
+
+#map-information-wrapper {
+    width: 500px;
+}
+
+#map-title-wrapper {
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 #map-title {
-    margin-bottom: 10px;
-    width: 100%;
-    font-family: "Lexend Deca Bold", sans-serif;
+    font-size: 0.9em;
+    display: inline-block;
+}
+
+.marquee {
+    animation: marquee var(--animation-time) linear infinite;
 }
 
 #map-sr-mods {
-    width: 200px;
-    border-radius: 5px;
+    width: 250px;
     background-color: var(--primary);
     display: flex;
     justify-content: space-between;
-    padding: 5px;
-}
-
-#map-sr {
-    font-family: "Lexend Deca Bold", sans-serif;
+    align-items: center;
+    padding: 3px;
+    border-radius: 5px;
 }
 
 #map-bpm-container {
-    padding: 5px;
-    font-size: 0.9em;
+    padding: 0 10px;
+    font-size: 0.8em;
 }
 
 #map-sr::after {
@@ -169,18 +236,22 @@ img {
 }
 
 #progress {
+    width: 60px;
     flex-shrink: 3;
 }
 
 #stats {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-gap: 20px;
-    position: relative;
+    width: 400px;
+    flex-shrink: 0;
 }
 
-#stats-combo, #stats-pp {
+#stats-pp {
     text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .subtitle {
