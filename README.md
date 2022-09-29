@@ -2,12 +2,9 @@
 
 PP counter/theme for [gosumemory](https://github.com/l3lackShark/gosumemory).
 
-![](https://media.discordapp.net/attachments/622937123338584074/1024118994636116018/unknown.png)
-
 Contains:
 
 - Beatmap background image
-- Circle map progress icon
 - Artist, song name and difficulty (scrolls right to left if too long)
 - Approximate star rating
 - Mods used
@@ -16,7 +13,15 @@ Contains:
 - Potential maximum PP value
 - 100/50/0 counts
 - Unstable rate
+- Slider break count
 
-Customizing this is really easy, just go into style.css and change the root variables to different colors if you want.
+To customize, just go into style.css and change the root variables (found in the `:root` block) to different colors if you want. Please note that the star icon's color will not change if you change text color as it is an image.
 
-Best used for standard mode, but taiko and catch modes work fine (note that the star rating may be wildly inaccurate).
+Best used for standard mode, not recommended for other modes (they can function, however the star rating calculation doesn't work. plus not all mania hits will show up).
+
+Looking for mania statistics? Check [MinigameJudge](https://github.com/vysiondev/MinigameJudge) out!
+
+Example:
+
+![](https://media.discordapp.net/attachments/622937123338584074/1024986638524350494/unknown.png)
+

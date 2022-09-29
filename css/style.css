@@ -1,15 +1,17 @@
 :root {
-    --primary: #ff125a;       /* Primary color used for progress, star rating/mod section, PP text */
-    --primary-dark: #31001a;  /* used for PP/progress background color */
+    --primary: #ff12ac;       /* Primary color used for progress, star rating/mod section, PP text */
+    --primary-dark: #56093b;  /* used for PP/progress background color */
+    --sr-mods-color: #ffffff; /* Color used for text of Star Rating/mod combination; use if text is too bright */
     --text-color: #ffffff;    /* Color used by most text */
-    --secondary: #806b6f;     /* Color of text under PP to show max possible current play */
+    --secondary: #806b76;     /* Color of text under PP to show max possible current play */
 
     /* Don't touch the variables below unless you know what you're doing */
-    --animation-time: 9s;
-    --counter-height: 90px;
-    --map-title-width: 500;
-    --offset: -500px;
-    --bg-offset: 0px;
+    --animation-time: 9s;     /* Dictates the amount of time text will scroll if it's too long, longer text will take slightly longer */
+    --counter-height: 90px;   /* Height of the counter */
+    --counter-width: 950px;   /* Width of the counter */
+    --map-title-width: 500;   /* The width of the map title div. */
+    --offset: -500px;         /* How far left map title text will scroll if too long */
+    /*--bg-offset: 0px;*/     /* All backgrounds have a fixed offset from the top for now */
 }
 
 @font-face {
@@ -26,7 +28,7 @@ html, body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    width: fit-content;
+    width: var(--counter-width);
 }
 
 #main-wrapper {
@@ -35,6 +37,7 @@ html, body {
     display: grid;
     grid-template-columns: 1fr;
     height: var(--counter-height);
+    width: var(--counter-width);
     overflow: hidden;
 }
 
@@ -49,7 +52,8 @@ html, body {
 #bg-mask {
     grid-row-start: 1;
     grid-column-start: 1;
-    background: -webkit-linear-gradient(left, rgba(0,0,0,0.6) 35%, rgba(0,0,0,1.0) 70%) no-repeat;
+    background: rgba(0,0,0,0.8);
+    /*background: -webkit-linear-gradient(top, rgba(0,0,0,0.8) 60%, rgba(0,0,0,1.0) 90%) no-repeat;*/
     height: var(--counter-height);
     width: 100%;
 }
@@ -58,8 +62,8 @@ html, body {
     grid-row-start: 1;
     grid-column-start: 1;
     z-index: -99;
-    width: 900px;
-    margin-top: var(--bg-offset);
+    max-width: 100%;
+    margin-top: -150px;
     overflow: hidden;
 }
 
@@ -68,8 +72,7 @@ html, body {
     grid-column-start: 1;
     height: var(--counter-height);
     padding: 0 15px;
-    border-radius: 5px;
-    z-index:100;
+    border-radius: 8px;
 }
 
 .main-section {
@@ -86,14 +89,13 @@ body {
     width: 100%;
 }
 
-.stats-top span, .max, .hits, #map-sr {
+.stats-top span, .max, .hits, #map-sr, #ur, #sb {
     font-family: "Lexend Deca Bold", sans-serif;
 }
 
 .stats-top span {
     color: var(--primary);
-    font-size: 1.7em;
-
+    font-size: 1.8em;
 }
 
 .stats-top {
@@ -102,6 +104,10 @@ body {
     white-space: nowrap;
     overflow: hidden;
     border-radius: 5px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
 }
 
 .stats-bottom {
@@ -159,16 +165,16 @@ img {
     max-width: 100%;
 }
 
-#map-progress {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    background: radial-gradient(closest-side, transparent 0, transparent 100%),
-    conic-gradient(var(--primary) calc(var(--value) * 1%), var(--primary-dark) 0);
-    border: 1px solid var(--primary);
-}
+/*#map-progress {*/
+/*    width: 60px;*/
+/*    height: 60px;*/
+/*    border-radius: 50%;*/
+/*    display: grid;*/
+/*    place-items: center;*/
+/*    background: radial-gradient(closest-side, transparent 0, transparent 100%),*/
+/*    conic-gradient(var(--primary) calc(var(--value) * 1%), var(--primary-dark) 0);*/
+/*    border: 1px solid var(--primary);*/
+/*}*/
 
 #map-information {
     display: flex;
@@ -206,13 +212,26 @@ img {
 }
 
 #map-sr-mods {
-    width: 250px;
-    background-color: var(--primary);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-radius: 5px;
+    gap: 10px;
+    color: var(--sr-mods-color);
+}
+
+#map-sr, #map-mods {
+    background-color: var(--primary);
     padding: 3px;
     border-radius: 5px;
+}
+
+/*#map-sr {*/
+/*    width: 200px;*/
+/*}*/
+
+#map-mods {
+    text-align: right;
 }
 
 #map-bpm-container {
@@ -261,4 +280,30 @@ img {
 
 #ur-container {
     font-size: 0.9em;
+}
+
+#other-stats {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 0.8em;
+}
+
+.other-stats-container {
+    color: var(--secondary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#ur, #sb {
+    font-size: 1.3em;
+}
+
+#ur {
+    color: var(--text-color);
+}
+
+#sb {
+    color: lightcoral;
 }
