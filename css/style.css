@@ -1,9 +1,10 @@
 :root {
     --primary: #ff12ac;       /* Primary color used for progress, star rating/mod section, PP text */
+    --primary-2: #ff1c1c;     /* Used as the 2nd gradient color in PP container */
     --primary-dark: #56093b;  /* used for PP/progress background color */
     --sr-mods-color: #ffffff; /* Color used for text of Star Rating/mod combination; use if text is too bright */
     --text-color: #ffffff;    /* Color used by most text */
-    --secondary: #806b76;     /* Color of text under PP to show max possible current play */
+    --secondary: #ffcfdd;     /* Color of text under PP to show max possible current play */
 
     /* Don't touch the variables below unless you know what you're doing */
     --animation-time: 9s;     /* Dictates the amount of time text will scroll if it's too long, longer text will take slightly longer */
@@ -15,15 +16,9 @@
 }
 
 @font-face {
-    font-family: "Lexend Deca";
-    src: url(../fonts/LexendDeca-Regular.ttf);
+    font-family: "font";
+    src: url(../fonts/Aldrich-Regular.ttf);
 }
-
-@font-face {
-    font-family: "Lexend Deca Bold";
-    src: url(../fonts/LexendDeca-ExtraBold.ttf);
-}
-
 html, body {
     margin: 0;
     padding: 0;
@@ -33,7 +28,6 @@ html, body {
 
 #main-wrapper {
     background-size: 65%;
-    border-radius: 5px;
     display: grid;
     grid-template-columns: 1fr;
     height: var(--counter-height);
@@ -52,7 +46,7 @@ html, body {
 #bg-mask {
     grid-row-start: 1;
     grid-column-start: 1;
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.85);
     /*background: -webkit-linear-gradient(top, rgba(0,0,0,0.8) 60%, rgba(0,0,0,1.0) 90%) no-repeat;*/
     height: var(--counter-height);
     width: 100%;
@@ -72,7 +66,6 @@ html, body {
     grid-column-start: 1;
     height: var(--counter-height);
     padding: 0 15px;
-    border-radius: 8px;
 }
 
 .main-section {
@@ -80,7 +73,7 @@ html, body {
 }
 
 body {
-    font-family: "Lexend Deca", sans-serif;
+    font-family: "font", sans-serif;
     color: var(--text-color);
     font-size: 1.4em;
 }
@@ -89,21 +82,25 @@ body {
     width: 100%;
 }
 
-.stats-top span, .max, .hits, #map-sr, #ur, #sb {
-    font-family: "Lexend Deca Bold", sans-serif;
-}
 
 .stats-top span {
-    color: var(--primary);
+    color: var(--text-color);
     font-size: 1.8em;
 }
 
+.stats-top-wrapper {
+    background: linear-gradient(to top, var(--primary) 0%, var(--primary-2) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .stats-top {
-    background: var(--primary-dark);
+    background: rgba(0,0,0,0.8);
+    width: 80%;
     padding: 2px;
     white-space: nowrap;
     overflow: hidden;
-    border-radius: 5px;
     display:flex;
     align-items: center;
     justify-content: center;
@@ -221,9 +218,7 @@ img {
 }
 
 #map-sr, #map-mods {
-    background-color: var(--primary);
     padding: 3px;
-    border-radius: 5px;
 }
 
 /*#map-sr {*/
@@ -297,7 +292,7 @@ img {
 }
 
 #ur, #sb {
-    font-size: 1.3em;
+    font-size: 1.15em;
 }
 
 #ur {

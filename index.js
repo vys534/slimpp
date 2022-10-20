@@ -34,7 +34,7 @@ function updateMapTitle(newTitle) {
     }, initialMapTitleUpdate ? 1000:0);
 }
 
-// TODO: remove unless there's a mod that doesnt properly adjust bpm
+// TODO: remove unless there's a mod that doesn't properly adjust bpm
 function changeBPM(min, max, scalar) {
     min = Math.round(min * scalar);
     max = Math.round(max * scalar);
@@ -73,10 +73,20 @@ let tempMaxBPM;
 
 let tempMD5;
 
+let tempGameMode;
+
 socket.onmessage = (e) => {
     const json = JSON.parse(e.data);
     if (tempState !== json.menu.state) {
         tempState = json.menu.state;
+    }
+    if (tempGameMode !== json.menu.gameMode) {
+        tempGameMode = json.menu.gameMode;
+        if (tempGameMode === 1) {
+            document.getElementById("hit50").style.opacity = 0;
+        } else {
+            document.getElementById("hit50").style.opacity = 1;
+        }
     }
     if (tempBg !== json.menu.bm.path.full) {
         tempBg = json.menu.bm.path.full;

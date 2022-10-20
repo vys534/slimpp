@@ -1,8 +1,10 @@
+![](Untitled.png)
+
 # SlimPP
 
-PP counter/theme for [gosumemory](https://github.com/l3lackShark/gosumemory).
+PP counter/theme for [gosumemory](https://github.com/l3lackShark/gosumemory). Use in your osu! streams to show your viewers your current performance statistics!
 
-Contains:
+Features:
 
 - Beatmap background image
 - Artist, song name and difficulty (scrolls right to left if too long)
@@ -20,8 +22,3 @@ To customize, just go into style.css and change the root variables (found in the
 Best used for standard mode, not recommended for other modes (they can function, however the star rating calculation doesn't work. plus not all mania hits will show up).
 
 Looking for mania statistics? Check [MinigameJudge](https://github.com/vysiondev/MinigameJudge) out!
-
-Example:
-
-![](https://media.discordapp.net/attachments/622937123338584074/1024986638524350494/unknown.png)
-
